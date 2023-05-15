@@ -22,6 +22,7 @@ const Login = () => {
     if (response.ok) {
       const data = await response.json()
       dispatch(setAuthenticatedUser(data))
+      localStorage.setItem('CSRF_TOKEN', data.token)
       navigate('/')
       return
     }

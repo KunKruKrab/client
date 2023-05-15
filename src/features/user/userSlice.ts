@@ -28,6 +28,7 @@ export const userSlice = createSlice({
     setLogoutUser: (state) => {
       state.isAuthenticated = false
       state.authUser = null
+      localStorage.removeItem('CSRF_TOKEN')
     },
   },
 })
