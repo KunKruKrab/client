@@ -1,24 +1,30 @@
-import React from 'react'
-import logo from './logo.svg'
 import './App.css'
+import { Route, Routes, Navigate } from 'react-router-dom'
+import Login from './Pages/Login/Login'
+import Home from './Pages/Home/Home'
+import Register from './Pages/Register/Register'
+import { useAppSelector } from './app/hooks'
+import { isAuthenticated } from './features/user/userSlice'
 
 function App() {
+  const isUserAuthenticated = useAppSelector(isAuthenticated)
+
   return (
     <div className='App'>
-      <header className='App-header'>
-        <img src={logo} className='App-logo' alt='logo' />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className='App-link'
-          href='https://reactjs.org'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        <Route
+          path='/'
+          element={isUserAuthenticated ? <Home /> : <Navigate to='/login' />}
+        />
+        <Route
+          path='/login'
+          element={!isUserAuthenticated ? <Login /> : <Navigate to='/' />}
+        />
+        <Route
+          path='/register'
+          element={isUserAuthenticated ? <Register /> : <Navigate to='/' />}
+        />
+      </Routes>
     </div>
   )
 }
