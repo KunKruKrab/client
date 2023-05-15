@@ -1,0 +1,23 @@
+.schedule {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.course-card {
+  flex: 0 0 calc(33.33% - 20px);
+  margin: 10px;
+  padding: 20px;
+  border-radius: 4px;
+  color: white;
+}
+
+.course-header {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.course-body {
+  font-size: 14px;
+}
