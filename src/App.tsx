@@ -5,6 +5,7 @@ import Home from './Pages/Home/Home'
 import Register from './Pages/Register/Register'
 import { useAppSelector } from './app/hooks'
 import { isAuthenticated } from './features/user/userSlice'
+import Course from './Pages/Course/Course'
 
 function App() {
   const isUserAuthenticated = useAppSelector(isAuthenticated)
@@ -20,9 +21,10 @@ function App() {
           path='/login'
           element={!isUserAuthenticated ? <Login /> : <Navigate to='/' />}
         />
+        <Route path='/register' element={<Register />} />
         <Route
-          path='/register'
-          element={isUserAuthenticated ? <Register /> : <Navigate to='/' />}
+          path='/course'
+          element={isUserAuthenticated ? <Course /> : <Navigate to='/login' />}
         />
       </Routes>
     </div>

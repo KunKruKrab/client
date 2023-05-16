@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import Navbar from '../../Components/Navbar/Navbar'
 // import Schedule, { Course } from '../../Components/Schedule/Schedule'
 import { getSchedule } from '../../Services/schedule'
+import { useAppSelector } from '../../app/hooks'
+import { selectUser } from '../../features/user/userSlice'
 
 interface Course {
   id: string
